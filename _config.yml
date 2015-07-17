@@ -7,6 +7,7 @@ url: "http://work2.j832.com" # the base hostname & protocol for your site
 twitter_username: kevmoo
 github_username:  kevmoo
 
+# To match blogger style
 permalink: /:year/:month/:title.html
 
 # Build settings
