@@ -1,0 +1,22 @@
+---
+layout: post
+title: Testing Dart projects with latest release and code coverage
+date: '2015-02-17T15:39:00.000-08:00'
+author: Kevin Moore
+tags:
+- dartlang
+- CI
+- dart
+- unit testing
+- coverage
+- testing
+- code coverage
+- Dart SDK
+- continuous integration
+modified_time: '2015-03-07T00:42:13.513-08:00'
+thumbnail: http://4.bp.blogspot.com/-q17Mwb3d_no/VOPQ4vgSgGI/AAAAAAAAC4I/3SwQSPTnQuM/s72-c/Screen%2BShot%2B2015-02-17%2Bat%2B3.23.02%2BPM.png
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-82529271620598884
+blogger_orig_url: http://work.j832.com/2015/02/testing-dart-projects-with-latest.html
+---
+
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-q17Mwb3d_no/VOPQ4vgSgGI/AAAAAAAAC4I/3SwQSPTnQuM/s1600/Screen%2BShot%2B2015-02-17%2Bat%2B3.23.02%2BPM.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-q17Mwb3d_no/VOPQ4vgSgGI/AAAAAAAAC4I/3SwQSPTnQuM/s1600/Screen%2BShot%2B2015-02-17%2Bat%2B3.23.02%2BPM.png" height="222" width="640" /></a></div><h3 id="test-your-package-stable-and-dev">Test your package stable and dev</h3> <p>If you’re using <a href="https://travis-ci.org">Travis CI</a>, it’s as easy as adding a <code>dart:</code> entry to your <code>.travis.yml</code> file. You can specify <code>dev</code>, <code>stable</code> or <strong>both</strong> to make sure your code works great on current and future build of the Dart SDK.</p> <pre class="prettyprint"><code class="language-yaml hljs haml">language: dart<br />dart: <br />  -<span class="ruby"> dev<br /></span>  -<span class="ruby"> stable</span></code></pre> <p>See the <a href="https://github.com/dart-lang/dartdoc/blob/master/.travis.yml">dartdoc project</a> for an example.</p> <p>Here’s a <a href="https://travis-ci.org/dart-lang/dartdoc/builds/51143376">build report</a> for <code>dartdoc</code> on Travis CI.</p> <h3 id="getting-code-coverage-with-coverallsio">Getting code coverage with coveralls.io</h3> <ol><li>Setup an account on <a href="https://coveralls.io">coveralls.io</a> using your GitHub account.</li><li>Pick the GitHub repo for your project</li><li>Get the Coveralls “repo token” for the project.</li><li>Populate it in <a href="http://docs.travis-ci.com/user/environment-variables/#Using-Settings">Travis CI Settings</a> as <code>COVERALLS_TOKEN</code> – or whatever you like.</li><li>Add Coveralls to your <code>travis.sh</code> script.</li></ol>   <pre class="prettyprint"><code class="language-bash hljs "><span class="hljs-shebang">#!/bin/bash<br /></span><br /><span class="hljs-comment"># Fast fail the script on failures.   </span><br /><span class="hljs-keyword">set</span> <span class="hljs-operator">-e</span><br /><br /><span class="hljs-comment"># Run the tests.</span><br />dart --checked test/test_all.dart<br /><br /><span class="hljs-comment"># If the COVERALLS_TOKEN token is set on travis</span><br /><span class="hljs-comment"># Install dart_coveralls</span><br /><span class="hljs-comment"># Rerun tests with coverage and send to coveralls</span><br /><span class="hljs-keyword">if</span> [ <span class="hljs-string">"<span class="hljs-variable">$COVERALLS_TOKEN</span>"</span> ]; <span class="hljs-keyword">then</span><br />  pub global activate dart_coveralls<br />  pub global run dart_coveralls report \<br />    --token <span class="hljs-variable">$COVERALLS_TOKEN</span> \<br />    --retry <span class="hljs-number">2</span> \<br />    --exclude-test-files \<br />    test/test_all.dart<br /><span class="hljs-keyword">fi</span></code></pre> <p>See the <a href="https://github.com/kevmoo/source_gen.dart/blob/master/tool/travis.sh">source_gen project</a> for an example.</p> <p>Here’s the <a href="https://coveralls.io/r/kevmoo/source_gen.dart">coverage report</a> for <code>source_gen</code> on Coveralls.</p> <p>Happy hacking!</p>

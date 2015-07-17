@@ -1,0 +1,16 @@
+---
+layout: post
+title: Flattening recursive algorithms with Linq
+date: '2008-01-16T13:13:00.001-08:00'
+author: Kevin Moore
+tags:
+- ".NET"
+- C#
+- Linq
+- interesting
+modified_time: '2008-01-16T19:22:22.299-08:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-7498861993769300105
+blogger_orig_url: http://work.j832.com/2008/01/flattening-recursive-algorithms-with.html
+---
+
+<p>I wake up this morning to find a comment from <a href="http://www.blogger.com/profile/10383237063496383837">Stefan</a> regarding my <a href="http://work.j832.com/2008/01/flattening-recursive-algorithms-is-like.html">post yesterday</a> about flattening recursion:</p>  <blockquote>   <p>In the future version of C# we may receive a new language construct <b>yield foreach</b> which will eliminate this problem. Read <a href="http://research.microsoft.com/%7Eschulte/Papers/Iterators%28FTfJP2005%29.pdf">this paper</a> by Erik Meijer or <a href="http://blogs.msdn.com/wesdyer/archive/2007/03/23/all-about-iterators.aspx">this blog post</a> by Wes Dyer if you are interested.</p> </blockquote>  <p>Ironically, I had read the paper and associated blog post last week.</p>  <p>And it got me thinking: could I abstract out my recursive traversal?</p>  <p>Even better: could I abstract it out in a way that was <a href="http://en.wikipedia.org/wiki/Language_Integrated_Query">Linq</a>-friendly?</p>  <p>The answer to both: oh yeah.</p>  <p>Check out the browser-friendly source <a href="http://j832.com/workBlogFiles/2008-01-16_SelectRecursive.htm">here</a>.</p>  <p>Now the code to find all of the selected directories becomes</p>  <blockquote>   <p>SubDirectories      <br />.SelectRecursive(directory =&gt; directory.SubDirectories)       <br />.Where(directory =&gt; directory.IsSelected);</p> </blockquote>  <p>How's that for straight-forward?</p>  <p>Note 1: The savvy reader will notice that the third implementation is now like the original: the target node is not included in SelectedDirectories if it is selected. I like this more.</p>  <p>Note 2: Since I made <strong>SelectRecursive</strong> more general, I'm not quite as efficient about creating a bunch of enumerable instances. I still (likely) save a lot in call stack space and having a general implementation is pretty cool.</p>  <p>Note 3: <del>You'll notice that <strong>SelectRecursive</strong> handles the case where there <strong>recursiveSelector</strong> returns null. This is different than how default extensions like <strong>SelectMany</strong> work. It made my usage in this scenario cleaner, but it's important to note.</del> <em>Or not. This bothered me for reasons I'll go into in another post. The code as checked-in now throws if null is returned.</em> These subtle implementation details can cause headaches later.</p>  <p>As I mentioned yesterday, you can get the full source code from my <a href="http://j832.com/PublicSoftware/" target="_blank">SVN repository</a>. The new methods extension methods have been added to Extensions.cs in J832.Common.</p>  <p>Happy recursive Linq-ing!</p>  

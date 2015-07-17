@@ -1,0 +1,17 @@
+---
+layout: post
+title: In search of DRY SPOT
+date: '2007-12-04T02:06:00.001-08:00'
+author: Kevin Moore
+tags:
+- Programming
+- ".NET"
+- C#
+- interesting
+- computing
+modified_time: '2007-12-04T02:06:01.648-08:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-8284392456672654790
+blogger_orig_url: http://work.j832.com/2007/12/in-search-of-dry-spot.html
+---
+
+<p>I realized there is a concept I come back to often in a lot of my software implementation and in a lot of my discussions. It goes by two common acronyms that are pretty much interchangeable.</p>  <p><strong>DRY</strong>: Don't Repeat Yourself.    <br /><strong>SPOT</strong>: Single Point of Truth.</p>  <p><a href="http://en.wikipedia.org/wiki/Don't_repeat_yourself">DRY</a> is articulated in the book <a href="http://www.pragprog.com/"><em>The Pragmatic Programmer</em></a>, although <a href="http://www.catb.org/~esr/">Eric Raymond</a> likes to <a href="http://www.faqs.org/docs/artu/ch04s02.html">call it SPOT</a>.</p>  <p>How does this exist in our world of C# and .NET? Well, every time you define a <strong>private const string</strong> or <strong>private const int</strong> instead of sprinkling magic values all over your code, every time you generate documentation from your source files, every time you develop a clever data structure to represent both the execution and the description of a process, you are practicing <strong>SPOT</strong>.</p>  <p>Quite often, my SPOT will live in a static class Util that I create for almost all of my software projects. If I have one way to handle errors, one pay to deal with collection, one way to handle user input, centralizing it makes bug fixing so much easier. It actually minimizes bugs in a lot of cases, which minimizes the need to fix them.</p>  <p>If you haven't heard of these concepts, they are great to add to your software vocabulary.</p>  <p>For many, I'm sure the idea has always been floating around, just without a good name.</p>  <p>Now you have a good shorthand when you are mocking someone else's code.</p>  <p>Happy hacking!</p>  

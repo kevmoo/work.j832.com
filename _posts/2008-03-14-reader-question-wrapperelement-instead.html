@@ -1,0 +1,16 @@
+---
+layout: post
+title: 'Reader Question: "Why WrapperElement<T> instead of Decorator?"'
+date: '2008-03-14T14:16:00.001-07:00'
+author: Kevin Moore
+tags:
+- WPF
+- Programming
+- ".NET"
+- C#
+modified_time: '2008-03-14T14:18:40.345-07:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-5014264886185678219
+blogger_orig_url: http://work.j832.com/2008/03/reader-question-wrapperelement-instead.html
+---
+
+<p></p>  <p>Yuval, via a <a href="http://work.j832.com/2008/03/bag-o-tricks-march-edition.html#c4679708233397793013">comment</a>, asks:</p>  <blockquote>   <p>Can you explain why you chose to define <i>WrapperElement&lt;T&gt;</i> instead of simply inheriting from <i>Decorator</i>? They seem to be doing the same thing.</p> </blockquote>  <p>Ah, it is good to read my post <a href="http://work.j832.com/2007/06/don-subclass-panel-unless-you-making.html">&quot;Don't subclass a Panel, unless you're making a Panel&quot;</a>.</p>  <p>First, where do I used WrapperElement&lt;T&gt;? Well, at the moment, it's used in three places: FlipTile3D, Set, and Transition3D. In all cases it simply wraps a Viewport3D.</p>  <p>Now, could I simply use Decorator? Sure. I could subclass Decorator and do basically the same thing. Even easier: I could subclass Viewport3D.</p>  <p>Why don't I?</p>  <p>It's all about API usability and correctness.</p>  <p>When I write a control (especially for the <a href="http://j832.com/bagotricks/">bag-o-tricks</a>) I try to make it &quot;right&quot;.</p>  <p>If these controls subclassed Viewport3D, they should <em>act</em> like Viewport3D. Meaning, they should support someone added arbitrary lights, models, etc. They should support messing with and removing elements that are already added.</p>  <p>I don't want this.</p>  <p>Wrapping everything with a Decorator, just exchanges problems.</p>  <p>If I subclass Decorator, it would imply that I mean people to treat the control like a Decorator, which means accessing and changing the Child property.</p>  <p>I don't want this, either.</p>  <p>WrapperElement&lt;T&gt; does some very simple things.</p>  <ul>   <li>Stores a Framework element as a child visual.</li>    <li>Adds it to its visual tree (via AddVisualChild)</li>    <li>overrides GetVisualChildCount</li>    <li>overrides VisualChildCount</li>    <li>overrides MeasureOverride</li>    <li>overrides ArrangeOverride</li>    <li>Provides <em>protected</em> access to the child so the subclass can play with it, but not the end user.</li> </ul>  <p>One should use WrapperElement&lt;T&gt; when one wants to use the implementation of an existing component--Viewport3D, Grid, etc.--but doesn't want the object model of that component exposed.</p>  <p>Make sense?</p>  <p>Thanks for the question, Yuval.</p>  <p>Happy hacking.</p>  

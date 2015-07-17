@@ -1,0 +1,14 @@
+---
+layout: post
+title: Ruby, Rails, Render, and the Content-Type HTTP header
+date: '2008-10-27T11:58:00.000-07:00'
+author: Kevin Moore
+tags:
+- ruby on rails
+- rails
+modified_time: '2009-01-25T15:55:54.994-08:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-4314739229951619189
+blogger_orig_url: http://work.j832.com/2008/10/ruby-rails-render-and-content-type-http.html
+---
+
+Don't you hate it when you google for 30 minutes, trying to solve a simple problem, but for some reason the right combination of terms--or at least the combination of terms you think is right--fails.<br /><br />It just happened to me with a simple problem: change the <a href="http://en.wikipedia.org/wiki/List_of_HTTP_headers">Content-Type HTTP Response Header</a> for  using standard Rails templates to be <code>text/xml</code>.<br /><br />The solution is pretty straight-forward:<blockquote><code>response.headers["Content-Type"] = 'text/xml'</code></blockquote>...as I eventually found <a href="http://snipplr.com/view/6463/header-content-type-in-rails-2/">here</a>.<br /><br />Setting this hash value in your <a href="http://apidock.com/rails/ActionController/Base">ActionController</a> action method does the trick.<br /><br />Here's hoping google picks this up and saves someone 20 minutes.

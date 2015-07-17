@@ -1,0 +1,12 @@
+---
+layout: post
+title: Enforce formatting for your Dart projects
+date: '2015-04-08T14:33:00.005-07:00'
+author: Kevin Moore
+tags: 
+modified_time: '2015-04-08T14:33:55.436-07:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-4092420545799711243
+blogger_orig_url: http://work.j832.com/2015/04/enforce-formatting-for-your-dart.html
+---
+
+A while ago, <a href="http://work.j832.com/2015/02/testing-dart-projects-with-latest.html">I wrote</a> about <a href="https://travis-ci.org/">using Travis</a>&nbsp;to add continuous integration to your Dart projects.<br /><br />I've started adding a new trick to <code>tool/travis.sh</code>: format verification.<br /><br />I add a script to my tool directory:<br /><br /><pre>#!/bin/sh<br />dart_files=$(git ls-tree --name-only --full-tree -r HEAD | grep '.dart$')<br />[ -z "$dart_files" ] &amp;&amp; exit 0<br /><br />unformatted=$(dartfmt -n $dart_files)<br />[ -z "$unformatted" ] &amp;&amp; exit 0<br /><br /># Some files are not dartfmt'd. Print message and fail.<br />echo &gt;&amp;2 "dart files must be formatted with dartfmt. Please run:"<br />for fn in $unformatted; do<br />  echo &gt;&amp;2 "  dartfmt -w $PWD/$fn"<br />done<br /><br />exit 1<br /></pre><br />Then I add a line to the top of <code>travis.sh</code>:  <br /><br /><pre># Ensure the source is formatted<br />$(dirname -- "$0")/ensure_dartfmt.sh<br /></pre><br />Here's <a href="https://github.com/dart-lang/dartdoc/commit/bded05b2f3f9a46e5f592f0bddea52d140b7fa67">a commit</a> that adds this support to the <a href="https://github.com/dart-lang/dartdoc">dartdoc project</a>.<br /><br />I find it's much easier to collaborate on a code base when a whole pile of formatting arguments are settled upfront.<br /><br />Cool? Let me know if you try this on your project.

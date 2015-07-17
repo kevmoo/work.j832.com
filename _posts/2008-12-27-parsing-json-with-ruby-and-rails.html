@@ -1,0 +1,16 @@
+---
+layout: post
+title: Parsing JSON with Unicode in Ruby and Rails
+date: '2008-12-27T15:22:00.001-08:00'
+author: Kevin Moore
+tags:
+- ruby on rails
+- rails
+- unicode
+- json
+modified_time: '2008-12-27T15:24:24.255-08:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-1052697333310735071
+blogger_orig_url: http://work.j832.com/2008/12/parsing-json-with-ruby-and-rails.html
+---
+
+As I've done <a href="http://work.j832.com/2008/10/ruby-rails-render-and-content-type-http.html">twice</a> <a href="http://work.j832.com/2008/10/imagemagick-rmagick-kerning-and.html">before</a>, I'm going to try to save someone else a couple of hours of hair pulling.<br /><br />I'm playing with some <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">RESTful</a> web services with a rails app as the client. The service returns <a href="http://www.json.org/">JSON</a>.<br /><br />Cool.<br /><br />As defined in the spec, JSON strings may contain Unicode characters escaped as '\u <span style="font-style: italic;">four-hex-digits</span>'.<br /><br />Let's say you had a JSON result with xml, like <code>{"value":"&lt;xml/&gt;"}</code>.<br /><br />The service might return <code>{"value":"\u003cxml/\u003e"}</code>.<br /><br />That's fine, except the default JSON parser in rails--<a href="http://apidock.com/rails/ActiveSupport/JSON">ActiveSupport::JSON</a>--doesn't (<a href="http://rails.lighthouseapp.com/projects/8994/tickets/1592-activesupportjsondecode-doesnt-unescape-unicode-characters">yet?</a>) support unescaping the Unicode characters.<br /><br />Boo!<br /><br />A <a href="http://www.digitalhobbit.com/archives/2008/08/27/rails-and-json-containing-unicode-characters/">blog post</a> pointed me to the stand-alone <a href="http://json.rubyforge.org/">JSON rails gem</a>.<br /><br />That solved my problem.<br /><br />Happy hacking, my friends.

@@ -1,0 +1,14 @@
+---
+layout: post
+title: 'Dart Dev: do you have unittest:any in your pubspec?'
+date: '2015-04-21T14:40:00.001-07:00'
+author: Kevin Moore
+tags:
+- dart
+modified_time: '2015-04-21T14:40:13.997-07:00'
+thumbnail: http://2.bp.blogspot.com/-lvqT8eit3LQ/UzDpnVcvETI/AAAAAAAAAWg/mLnYDueon8o/s72-c/dart_dev_y_u_no.jpg
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-5159992752716773175
+blogger_orig_url: http://work.j832.com/2015/04/dart-dev-do-you-have-unittestany-in.html
+---
+
+<div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-lvqT8eit3LQ/UzDpnVcvETI/AAAAAAAAAWg/mLnYDueon8o/s1600/dart_dev_y_u_no.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://2.bp.blogspot.com/-lvqT8eit3LQ/UzDpnVcvETI/AAAAAAAAAWg/mLnYDueon8o/s1600/dart_dev_y_u_no.jpg" /></a></div><br /><b>tl;dr</b>&nbsp;If you're using <a href="https://pub.dartlang.org/packages/unittest">unittest</a>, make sure you have an upper-bound on the package version in your <b>pubspec.yaml</b>.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-F2UjocYu7Rw/VTbCWmHSNzI/AAAAAAAADPc/tWalfkmzGl0/s1600/Screen%2BShot%2B2015-04-21%2Bat%2B2.33.55%2BPM.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-F2UjocYu7Rw/VTbCWmHSNzI/AAAAAAAADPc/tWalfkmzGl0/s1600/Screen%2BShot%2B2015-04-21%2Bat%2B2.33.55%2BPM.png" height="50" width="320" /></a></div><br />The new <a href="https://pub.dartlang.org/packages/test">(unit)test</a> package is almost ready and it's awesome.<br /><br />The 0.12.0 release will be the migration point from <a href="https://pub.dartlang.org/packages/unittest">unittest</a> to <a href="https://pub.dartlang.org/packages/test">test</a>.<br /><br />Folks who use unittest will be able to upgrade to 0.12.0 and will get an exported version of test. You'll notice some breaking changes and a lot of deprecations. All future work will happen in the test package, so you'll want to migrate eventually.<br /><br />In the mean time, if you're not ready to migrate, make sure you don't end up with 0.12.0 accidentally.<br />You might wonder why your tests start acting weird.

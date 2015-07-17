@@ -1,0 +1,12 @@
+---
+layout: post
+title: 20 Steps to happiness
+date: '2007-05-29T22:59:00.001-07:00'
+author: Kevin Moore
+tags: 
+modified_time: '2007-05-29T23:05:41.434-07:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-3152683485772538278
+blogger_orig_url: http://work.j832.com/2007/05/20-steps-to-happiness.html
+---
+
+<p>(This silliness assumes you haven't jumped into the beauty that is WPF development. It also assumes you're running Vista. If you aren't, why not? If you have a good reason, I'm betting you'll get help installing .NET Framework 3.0. on XPSP2)</p> <ol> <li>Go <a href="http://msdn.microsoft.com/vstudio/express/future/downloads/">here</a> <li>Click on Visual C# <li>Login with your <a href="http://get.live.com/getlive/overview">Windows Live ID</a>  <li>Download and click on all of the nessesary buttons  <li>Marvel at the small (~30 MB) download (if you don't get the data stuff).  <li>Type "Visual" in Vista's start menu.  <li>Marvel at the cool search feature  <li>Pick <em>Microsoft Visual C# 9.0 Express Edition</em>  <li>Marvel at our crazy long product names  <li>Pick "New Project..." from the start menu. (Ctrl+Shift+N to be super fast)  <li>Pick <em>WPF Application</em>.  <li>Marvel at the visual designer for WPF. (Thanks Cider team.)  <li>Open up the Toolbox and find the ListBox under <em>Common Controls</em>.  <li>Draw out a ListBox on the Window.  <li>Marvel at the XAML updating right away.  <li>Notice the auto-generated name for your ListBox: listBox1.  <li>Open up Window1.xaml.cs  <li>Paste the following below InitializeCompontent();<br><br>var foo = from a in Directory.GetDirectories(@"C:\") select new{a, a.Length};<br>listBox1.ItemsSource = foo.ToList();<br> <li>Marvel at:<br>-the use of "var" -- mmm...implicit types<br>-from/select in C# -- mmm...Linq goodness<br>-new {a, a.Length} -- mmm...anonymous types<br>.ToList() -- mmm...extension methods  <li>Hit F5</li></ol> <p>WPF Goodness + VS "Orcas" design-time Goodness + Linq goodness = happiness</p> <p>mmm...</p> <ol> <p>&nbsp;  <p>&nbsp;</p></ol>

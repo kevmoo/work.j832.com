@@ -1,0 +1,18 @@
+---
+layout: post
+title: Bag of Tricks Update (two years in the making)
+date: '2010-04-06T22:50:00.001-07:00'
+author: Kevin Moore
+tags:
+- WPF
+- Programming
+- ".NET"
+- xaml
+- C#
+- Silverlight
+modified_time: '2010-04-08T14:06:37.882-07:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-3798506029905317156
+blogger_orig_url: http://work.j832.com/2010/04/bag-of-tricks-update-two-years-in.html
+---
+
+<a href="http://bot.codeplex.com/"><img style="display: block; float: none; margin-left: auto; margin-right: auto" src="http://download.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=bot&amp;DownloadId=114209&amp;Build=16429" /></a><p>Has it really been two years since the <a href="http://work.j832.com/2008/03/bag-o-tricks-march-edition.html">last official update</a> of the <a href="http://bot.codeplex.com/">Bag of Tricks</a>?</p> <p>I guess it has. A lot has changed since then. I started my own consulting company. And then joined up with <a href="http://twitter.com/ingebretsen">Robby</a> to launch <a href="http://thinkpixellab.com/">Pixel Lab</a>.</p> <p>With previous releases, I was doing a very good job of breaking out almost all of the changes. This time, there are just too many. I’ll try to highlight the big ones.</p> <ul> <li>Added Org Tree. This is a pretty straight-forward sample of a vertical tree view.</li> <li>Added ReorderListBox. This is something Robby’s had for a while. I cleaned it up a bit for reuse.</li> <li>Added Show</li> <li>Removed the date controls. There are better versions in the official <a href="http://wpf.codeplex.com/">WPF Codeplex site</a>.</li> <li>Created AnimatingPanel abstract class. This is now the base class for AnimatingTilePanel <em>and</em> TreeMapPanel. All you have to tweak is call the protected virtual ArrangeChild in ArrangeOverride.</li> <li>A bunch of additions to the Common assembly.</li> <li>Moved main development over to VS 2010.</li> <li>Added support for Silverlight 4. You’ll find projects nested in the same folder. You’ll also notice #define #if #else for SILVERLIGHT which handles some special cases where things don’t work in both places.</li> <li>Added Vector for Silverlight. This allows a bunch of my helper methods and animation methods to work without code changes between the two frameworks.</li> <li>Added ObservableCollectionPlus&lt;T&gt;. This has a ReadOnly property, along with support for Sort and adds Move to Silverlight OC&lt;T&gt;.</li> <li>…and a bunch of other stuff I’m likely forgetting.</li></ul> <p>You can get the source (via SVN) at Codeplex: <a href="http://bot.codeplex.com/">http://bot.codeplex.com/</a></p> <p>You can download a sample app that runs against WPF 3.5 <a href="http://bot.codeplex.com/releases/view/43175">here</a>.</p> <p>The BOT has been the basis for Silverlight, WPF, and Windows Phone 7 apps I’ve written this year. Robby and I are going to keep tweaking it and updating it as we need new stuff.</p> <p>You should do the same.</p> <p>File bugs. Submit patches.</p> <p>Let’s make this <em>our</em> Bag of Tricks.</p> <p> </p> <p>Happy hacking,</p> <p>>Kevin</p><p>PS -> please make comments on the codeplex project discussion page! It's much easier to reply there. :-)</p>

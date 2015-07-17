@@ -1,0 +1,13 @@
+---
+layout: post
+title: WPF and CSLA (and subclassing Panel)
+date: '2007-06-26T10:06:00.001-07:00'
+author: Kevin Moore
+tags:
+- WPF
+modified_time: '2007-06-26T10:09:09.495-07:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-2881722756199536595
+blogger_orig_url: http://work.j832.com/2007/06/wpf-and-csla-and-subclassing-panel.html
+---
+
+<p>From <a href="http://rrelyea.spaces.live.com/Blog/cns!167AD7A5AB58D5FE!2133.entry">Rob's blog</a>, I found <a href="http://forums.lhotka.net/forums/thread/15577.aspx">a discussion</a> about WPF support in CSLA.NET, specifically what to subclass for the containers.</p> <p>I haven't played w/ the DataPanelBase, as it's discussed, but I'd be curious what Rockford would say about my <a href="http://work.j832.com/2007/06/don-subclass-panel-unless-you-making.html">discussion on subclassing panel</a>.</p> <p>If he's building a container to host arbitrary UI, but the user may want an arbitrary layout, I would push for Decorator. This would allow the user to specify any panel she wants.</p> <p>A bit more Xaml is an okay trade-off to ensure a clean object model and straight-forward usage semantics.</p> <p>As Rob mentions, Window and Page are great examples of generic containers that only support a single child.</p> <p>StackPanel is particularly bad since it will give it's child an infinite measure/arrange in the vertical direction. This is really bad if you put in an ItemsControl because it will take up as much space as needed to render all of its items. This could both mess up the UI and slow things way down--virtualization doesn't help much if all of the items are visible.</p>

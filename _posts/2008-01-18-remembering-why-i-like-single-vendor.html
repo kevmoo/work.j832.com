@@ -1,0 +1,13 @@
+---
+layout: post
+title: Remembering why I like single-vendor platforms
+date: '2008-01-18T00:44:00.001-08:00'
+author: Kevin Moore
+tags:
+- css
+modified_time: '2008-01-18T00:48:33.638-08:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-3508819462428358018
+blogger_orig_url: http://work.j832.com/2008/01/remembering-why-i-like-single-vendor.html
+---
+
+<p>Now before I start a flame war, remember <a href="http://work.j832.com/2007/09/what-i-install-on-new-machine-free-apps.html">what I wrote</a> in September:</p>  <blockquote>   <p>I believe in open standards. The only way to protect and encourage open standards is to have many prevalent implementations of said standards.</p> </blockquote>  <p>Having said that, there are still a lot of reasons to love single-vendor, even closed, platforms.</p>  <p>One of those reasons: compatibility.</p>  <p>I had a simple goal: change my blog theme from fixed-width to fluid-width.</p>  <p>Code lines tend to take up a lot more space than 450px. Formatting C# for narrow columns is a pain.</p>  <p>I searched and hacked in vane for over an hour before I found a CSS solution.</p>  <p>The whole time there was a 16-year-old inside of me yelling: &quot;Just use tables! They worked great in 1996!&quot;</p>  <p>I'm going to spare you the gnarly details, but it involves negative margins. (Yes, negative margins. I almost fell off my <a href="http://en.wikipedia.org/wiki/Swiss_ball">Swiss ball</a>.) Huge props to the folks at <a href="http://www.dynamicdrive.com/">Dynamic Drive</a> for their straight-forward-as-can-be-expected walk-through of <a href="http://www.dynamicdrive.com/style/layouts/category/C9/">fluid, two-column layouts</a> in CSS.</p>  <p>After a bunch of tweaking, I got everything looking good in <a href="http://www.mozilla.com/firefox/">Firefox</a>. I then jumped into <a href="http://windowslivewriter.spaces.live.com/">Live Writer</a> to start writing. I updated the cached theme for my blog. It looked really broken. Why?</p>  <p>Well, Live Writer uses Trident--the IE rendering engine.</p>  <p>After much hacking, I discovered that IE cares about the order of &lt;div&gt; elements in situations where Firefox doesn't. Also, Firefox respects // to mark comments in CSS. IE doesn't.</p>  <p>After another hour, I got things working in both.</p>  <p>No I haven't tested in IE6 or Safari. Please let me know if you have issues.</p>  <p>I'm guessing I'm one of the few who look at my blog in a browser--most probably use a blog reader.</p>  <p>Good idea.</p>  

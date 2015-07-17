@@ -1,0 +1,16 @@
+---
+layout: post
+title: The event pattern in C# and funny coincidence
+date: '2007-11-03T12:59:00.001-07:00'
+author: Kevin Moore
+tags:
+- Programming
+- ".NET"
+- C#
+- interesting
+modified_time: '2007-11-03T13:01:26.769-07:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-2137414304365334866
+blogger_orig_url: http://work.j832.com/2007/11/event-pattern-in-c-and-funny.html
+---
+
+<p>On Thursday, I wrote about <a href="http://work.j832.com/2007/11/importance-of-patterns-and-guidelines.html">the importance of software patterns</a>, specifically the event pattern in C#.</p>  <p>That very afternoon I was going through some code written by a co-worker that leveraged this pattern.</p>  <p>To keep things simple, let's imagine it was like this.</p><pre>public event EventHandler<messageeventargs> NewMessage;<br /><br />protected virtual void OnNewMessage(MessageEventArgs args)<br />{<br />  EventHandler<messageeventargs> handler = NewMessage;<br />  if(handler != null)<br />  {<br />    handler(this,args);<br />  }<br />}<br /><br />protected virtual void OnNewMessage(string message)<br />{<br />  EventHandler<messageeventargs> handler = NewMessage;<br />  if(handler != null)<br />  {<br />    handler(this,new MessageEventArgs(message));<br />  }<br />}</pre><p>Pretty straight forward, right? See the problem?</p><p>This gets to the core of why understanding a pattern deeply is important. The pattern of having a protected virtual <em>OnFoo</em> method for your <em>Foo</em> event is to ensure that a subclass can peek at the event before it's fired. The implementation above will require the subclass to not only override both methods, but to understand that she <strong>must</strong> override both methods to make sure all raised events are captured.</p><p>This is making the job of the subclass writer much harder and likely more error prone.</p><p>I'm not saying one should get rid of the helper method. It's fine. It just needs to be tweaked.</p><pre>protected void OnNewMessage(string message)<br />{<br />  OnNewMessage(new MessageEventArgs(message));<br />}</pre><p>First, get rid of the virtual flag. This should be callable from a subclass, but there should only be one method to override.</p><p>Second, call the 'real' virtual method from the helper. This ensures that anyone who overrides OnNewMessage will get the desired result.</p><p>A clever developer might not like this, because she wants to avoid allocating the EventArgs unless there actually are handlers to call. Clever optimization, but it breaks the pattern.</p><p>Make sense?</p><p>Happy hacking.</p>

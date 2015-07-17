@@ -1,0 +1,17 @@
+---
+layout: post
+title: The Game "Set" in WPF (Redux)
+date: '2008-01-06T21:41:00.001-08:00'
+author: Kevin Moore
+tags:
+- WPF
+- Programming
+- ".NET"
+- fun
+- C#
+modified_time: '2008-01-06T21:41:26.207-08:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-5436443874137186689
+blogger_orig_url: http://work.j832.com/2008/01/game-in-wpf-redux.html
+---
+
+<p>Yesterday (well, early this morning) I <a href="http://work.j832.com/2008/01/wpf-set-xbap.html">posted my first stab</a> at the game Set implemented in WPF.</p>  <p>Amazing what 20 hours of bake time can do.</p>  <ul>   <li>Removed insanely complex and unnecessary optimization that made the code for SetGame.TryPlay almost un-readable.</li>    <li>Cleaned up the 'test' mode by removing it. If you build/run DEBUG, you'll get a Test button. If you build/run RELEASE, you won't.</li>    <li>Used binding in the WPF app where it makes sense.</li>    <li>Added a bunch of caching to the card generation on the WPF side. Re-creating a bunch of brushes and pens is silly.</li>    <li>Added a test project: <strong>WpfSet_Test</strong> to run the data model through its paces.</li>    <li>Fixed deployment to actually use Visual Studio Deploy functionality. (Yesterday, I just uploaded the files from the build directory.) If you accessed <a href="http://j832.com/workBlogFiles/WpfSet/">the XBAP</a> yesterday, please refresh and make sure the title says at least &quot;WPF Set - 2008-01-<strong>06</strong>&quot; and not &quot;WPF Set - 2008-01-<strong>05</strong>.&quot; If refreshing doesn't move you beyond 2008-01-<strong>05</strong>, there is something fishy with your application cache. Drop me a line and I'll try to fix it. </li> </ul>  <p>The <a href="http://j832.com/workBlogFiles/WpfSet/">XBAP URL</a> hasn't changed.</p>  <p>I've combined the source and binaries into <a href="http://j832.com/workBlogFiles/J832.WpfSet.zip">one zip file</a> [53KB]. I've always thought having dated copies of files was goodness, but then I realized if someone links to the old version, they'll never get updates. I'm going to try to keep an updated read-me in the zip file so folks know what version they've downloaded.</p>  <p>As always, send me an email or a comment if you have questions.</p>  <p>Happy Setting.</p>  

@@ -1,0 +1,16 @@
+---
+layout: post
+title: ImageMagick, RMagick, Kerning, and baseline_shift
+date: '2008-10-29T12:51:00.000-07:00'
+author: Kevin Moore
+tags:
+- ImageMagick
+- ruby on rails
+- rails
+- RMagick
+modified_time: '2008-10-29T13:01:33.926-07:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-2930529341112961672
+blogger_orig_url: http://work.j832.com/2008/10/imagemagick-rmagick-kerning-and.html
+---
+
+As I <a href="http://work.j832.com/2008/10/ruby-rails-render-and-content-type-http.html">said on Monday</a>, at some point there has to be the first person to blog a useful tidbit in the world of software.<br /><br />So, for the second time this week, let me be the first.<br /><br />I've been using <a href="http://www.imagemagick.org/">ImageMagick</a>--via <a href="http://www.imagemagick.org/RMagick/doc/">RMagick</a>--to generate dynamic PNGs on the server.<br /><br />In general, it's working great, except in one case.<br /><br />I'm drawing text with custom fonts. The fonts have custom <a href="http://en.wikipedia.org/wiki/Kerning">kerning</a>.<br /><br />ImageMagick seems to handle this fine <em>except</em> when one uses <a href="http://www.imagemagick.org/RMagick/doc/rvgtext.html#advanced">baseline_shift</a>, at which point ImageMagick forgets everything about kerning.<br /><br />You can fake the baseline shift by using <a href="http://www.imagemagick.org/RMagick/doc/draw.html#get_type_metrics">get_type_metrics</a>.<br /><br />Again, here's hoping this saves someone 20 minutes...or in my case, a few hours.

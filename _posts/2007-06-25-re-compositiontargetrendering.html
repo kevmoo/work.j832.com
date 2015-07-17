@@ -1,0 +1,13 @@
+---
+layout: post
+title: 'RE: CompositionTarget.Rendering'
+date: '2007-06-25T18:07:00.001-07:00'
+author: Kevin Moore
+tags:
+- WPF
+modified_time: '2007-06-25T18:07:02.701-07:00'
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-5114479989550012204
+blogger_orig_url: http://work.j832.com/2007/06/re-compositiontargetrendering.html
+---
+
+<p>I use <em><a href="http://msdn.microsoft.com/en-us/library//system.windows.media.compositiontarget.rendering.aspx">CompositionTarget.Rendering</a></em> <strong>a lot</strong> in the <a href="http://blogs.msdn.com/okoboji/pages/BagOTricks.aspx">bag-o-tricks</a>. (Last count: AnimatingTilePanel, Graph, ZapDecorator, and FlipTile3D.)</p> <p>Rob <a href="http://rrelyea.spaces.live.com/Blog/cns!167AD7A5AB58D5FE!2137.entry">posted to an internal discussion</a> about how to use (and how not to use) the event. (I saw a <a href="http://www.wiredprairie.us/journal/2007/06/compositiontarget_performance.html">link on WiredPrairie</a> as well.)</p> <p>Specifically, it's important to remember this is a timer that ticks <strong>all of the time</strong>--every frame--potentially 60 times a second or more.</p> <p>Since it's a static event, it will keep firing even if control you use it in isn't on the screen any more.</p> <p>Hence, it's critically important that you manage the use of this event appropriately.</p> <ul> <li><strong>Un-register the event when your control is unloaded.</strong> I actually add a handler for the Unloaded event in my controls to do this. If you don't do this, events will still be fired to your delegate, even if the control is removed from the visual tree! This is not only a perf hit, but could introduce crazy behavior, crashes, data loss, mass hysteria, etc.</li> <li><strong>Potentially un-register the event when the UI isn't visible.</strong> Like when the window is minimized. Be careful, though. Finding window state from a control could be ugly. You also may want to let your animation run its course even if it's not visible, which leads me to the final bullet...</li> <li><strong>Un-register when your animation "settles".</strong> Since I used the <em>Rendering</em> event for my physics models, I do this when I reach equilibrium. Once all of the forces have balanced out and stuff stops moving, I un-register the event (and make sure to re-register once something changes that will start things moving again).</li></ul> <p>Users don't like their CPU pegged (unless something really cool is happening). A user with a dead laptop battery is not a happy user.</p> <p>Happy hacking!</p>

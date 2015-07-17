@@ -1,0 +1,16 @@
+---
+layout: post
+title: There are (at least) two things wrong with this Dart code
+date: '2014-04-26T15:45:00.000-07:00'
+author: Kevin Moore
+tags:
+- dartlang
+- Programming
+- dart
+modified_time: '2014-04-26T15:45:19.994-07:00'
+thumbnail: http://4.bp.blogspot.com/-Xj6x0dbVPxA/U1wrVMg0RZI/AAAAAAAALek/CcKw-Go-lqk/s72-c/dart_logo_simple.png
+blogger_id: tag:blogger.com,1999:blog-2115056243892631308.post-2758999054338105736
+blogger_orig_url: http://work.j832.com/2014/04/there-are-at-least-two-things-wrong.html
+---
+
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-Xj6x0dbVPxA/U1wrVMg0RZI/AAAAAAAALek/CcKw-Go-lqk/s1600/dart_logo_simple.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-Xj6x0dbVPxA/U1wrVMg0RZI/AAAAAAAALek/CcKw-Go-lqk/s1600/dart_logo_simple.png" /></a></div><br />Specifically with <code>operator ==</code>.<br /><br /><pre>class Foo {<br />  int _a;<br />  int _b;<br /><br />  int get a =&gt; _a;<br />  int get b =&gt; _b;<br /><br />  ...<br /><br />  bool operator ==(Foo other) {<br />    return other._a == this._a &amp;&amp; other._b == this._b;<br />  }<br />}<br /></pre><br />Any guesses?
