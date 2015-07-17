@@ -12,3 +12,5 @@ permalink: /:year/:month/:title.html
 
 # Build settings
 markdown: kramdown
+
+google_analytics_id: UA-3441863-2
