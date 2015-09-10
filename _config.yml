@@ -14,3 +14,6 @@ permalink: /:year/:month/:title.html
 markdown: kramdown
 
 google_analytics_id: UA-3441863-2
+
+gems:
+  - jekyll-feed
