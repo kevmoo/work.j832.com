@@ -6,7 +6,6 @@ var hasUpdates = false;
 });
 
 if (hasUpdates) {
-  console.log("pretty");
   var link = document.createElement('link');
   link.type = 'text/css'
   link.rel = 'stylesheet'
@@ -14,6 +13,4 @@ if (hasUpdates) {
 
   document.head.appendChild(link)
   prettyPrint();
-} else {
-  console.log('no pretty');
 }
