@@ -127,13 +127,15 @@ blockquote {
  */
 pre,
 code {
-    font-size: 15px;
-    border: 1px solid $grey-color-light;
+    font-family: Monaco,"DejaVu Sans Mono","Courier New",monospace;
+    font-size: 14px;
+    border: 1px solid $grey-color-dark;
     border-radius: 3px;
 }
 
 code {
-    padding: 1px 5px;
+    padding: 3px 5px;
+    background: $grey-color-light;
 }
 
 pre {
@@ -144,6 +146,7 @@ pre {
         border: 0;
         padding-right: 0;
         padding-left: 0;
+        background: inherit;
     }
 }
 
