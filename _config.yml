@@ -18,7 +18,7 @@ kramdown:
 
 google_analytics_id: UA-3441863-2
 
-gems:
+plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-sitemap
