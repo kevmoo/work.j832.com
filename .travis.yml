@@ -1,0 +1,19 @@
+language: ruby
+
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
+script:
+  - bundle exec jekyll build  --profile
+
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  message: "Travis deploy from commit $TRAVIS_COMMIT"
+  project: work-j832-com
+  on:
+    branch: gh-pages
+
+branches:
+  only: [gh-pages]
