@@ -1,5 +1,10 @@
 language: ruby
 
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
