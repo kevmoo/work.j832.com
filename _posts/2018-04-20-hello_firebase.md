@@ -7,7 +7,7 @@ tags:
 - travis-ci
 ---
 
-![Bring your own JavaScript to Dart](/assets/2018-04-20-firebase_hosting.png){: width='650' height='300' itemprop='image' }
+![Hello, Firebase!](/assets/2018-04-20-firebase_hosting.png){: width='650' height='300' itemprop='image' }
 
 Hey, folks! Almost 3 years ago, I blogged about [moving my blog from Blogger to
 GitHub](/2015/07/hello-github.html). It's high time I moved back to Google,
