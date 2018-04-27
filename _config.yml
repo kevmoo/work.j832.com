@@ -16,7 +16,7 @@ kramdown:
   input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
   hard_wrap: false
 
-google_analytics_id: UA-3441863-2
+google_analytics_id: UA-3441863-3
 
 plugins:
   - jekyll-feed
