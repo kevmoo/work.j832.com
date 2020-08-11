@@ -1,5 +1,6 @@
 {
     "hosting": {
+    	"site": "work-j832",
         "public": "_site",
         "ignore": [
             "**/.*",
