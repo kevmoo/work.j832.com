@@ -15,8 +15,10 @@ script:
 deploy:
   skip_cleanup: true
   provider: firebase
+  token:
+    secure: Mx+bgeIzEFw83aUz3N/k6HOFNEsYJghZFRY3zaCqUkY6mSUo1sSsPq3ddoGhFdS8PyxEI4Wg9RQSb1H1JArIFHgkukKYF/2JDnBLPFk6moUb2mF9+ce3710rA84ViSq71/A9eit5vpz2Yosf7gGd+ngUTuKFoXoQ56pFThjg/5UqHxuA47v66/QHeVl3fSF2rasXxJ8AEo+1Qomv7JqsSfx4viX9sxWkeJClNIFH9cY2CBcYvbCT4LvQJBwjejSFZCA/NbW939j0O1/eNQFxcMrDZqtss+F8HgI2kgEc2szdkOZOrpMJz5iqqGmT4d8hx1VRXAcSN5D5f29xDb00+nFP15dHR4vE6Ug8FTOHL2bBmMxFCqzGMVF4OtRMBytacr/ZAkcU/5WyMdLfDJTK0qfO6XkBW0FEW+2yLjOo2NAbKGVFDaWA/uO9tUqY8zyt8EXlzpsZDVtPMc9jUECeoibMBaOiFsb0xng45wKLysYaiPfqXZtSJ1oPj+52EJMmiH+1tPbxFcwwAsxRjrVnJqv7PqzEZKMxUaw/n1I14wqbcDNXZ80Mz1Ppx+o/+aUH/jEd+TjW8BjaTadSKTeWHFv3heLXo2VO1SO/+9vLkqGPBpJigh8rACd9pAg6TIHPBkH7Tb0vIw2JiLLbgYJFuWbsAhr3N9ySMswG+Trg7Uc=
   message: "Travis deploy from commit $TRAVIS_COMMIT"
-  project: work-j832-com
+  project: j832-com
   on:
     branch: gh-pages
 
