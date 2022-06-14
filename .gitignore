@@ -1,4 +1,5 @@
 .firebase
 .jekyll-metadata
 .sass-cache
+firebase-debug.log
 _site
