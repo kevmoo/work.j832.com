@@ -4,8 +4,7 @@ description: >-
   Googler working on Dart and Flutter web tech
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://work.j832.com" # the base hostname & protocol for your site
-twitter_username: kevmoo
-github_username:  kevmoo
+homepage: j832.com
 
 # To match blogger style
 permalink: /:year/:month/:title.html
