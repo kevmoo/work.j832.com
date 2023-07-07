@@ -1,5 +1,6 @@
 {
     "hosting": {
+        "predeploy": "bundle exec jekyll b",
     	"site": "work-j832",
         "public": "_site",
         "ignore": [
