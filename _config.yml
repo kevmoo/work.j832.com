@@ -1,7 +1,7 @@
 # Site settings
-title: Kevin @ Work
-description: > # this means to ignore newlines until "baseurl:"
-  Googler working on Dart
+title: kevmoo @ Work
+description: >-
+  Googler working on Dart and Flutter web tech
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://work.j832.com" # the base hostname & protocol for your site
 twitter_username: kevmoo
